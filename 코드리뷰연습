@@ -1,0 +1,39 @@
+class Shoes:
+    # 클래스 속성
+    brand = 'Python'
+    production_count = 0
+
+    def __init__(self, model, size, color):
+        self.model = model
+        self.size = size
+        self.color = color
+        print(f'{self.model}, {self.size}, {self.color}를 생성하였습니다.')
+        Shoes.production_count += 1
+
+    def __str__(self):  # __str__은 반드시 return값이 있어야함
+        return f'{self.model}, {self.size}, {self.color}'
+
+    def color_change(self, new_color):
+        self.color = new_color
+
+# 신발 두 켤레를 생성합니다. 크기와 색상은 자유롭게 지정해주세요.
+sneakers = Shoes('sneakers',265,'green')  # model 속성: sneakers
+slippers = Shoes('slippers',250,'blue')  # model 속성: slippers
+# __str__() 메서드가 잘 구현되었는지 확인해봅시다.
+print(sneakers)
+print(slippers)
+# 신발의색상을 변경하고 바뀐 색상을 출력해봅시다.
+sneakers.color_change('yellow')
+slippers.color_change('pruple')
+
+print(sneakers.color)
+print(slippers.color)
+
+# 클래스 속성 brand를 'Python'에서 'Aiffel'로 변경
+Shoes.brand = 'Aiffel'
+# sneakers와 slippers의 brand 속성을 출력해봅시다.
+# 브랜드가 'Aiffel'로 바뀌었을까요?
+print(sneakers.brand)
+print(slippers.brand)
+# 신발의 총 개수를 출력해봅시다.
+print(Shoes.production_count)
