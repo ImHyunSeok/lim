@@ -17,6 +17,7 @@ class PomodoroTimer {
   int longBreak = 15; // 4번 반복 후 긴 쉬는시간
   int workCount = 0; // 작업반복횟수
 
+  //타이머 시작 함수
   void startTimer() {
     workCount++;
     print('Pomodoro 타이머 시작! 작업반복횟수 ${workCount}회');
@@ -31,9 +32,12 @@ class PomodoroTimer {
       print('남은 시간: $minutes 분 $seconds 초');
       remainingTime--;
       
+     
       if (remainingTime < 0){
         timer.cancel();
         print('작업 시간 종료');
+        
+        // 4번 반복마다 긴 휴식, 아닐 경우 짧은 휴식
         if (workCount % 4 == 0){
           startBreak(longBreak, '긴 휴식');
         } else {
@@ -44,6 +48,7 @@ class PomodoroTimer {
     
   }
   
+  //휴식시작 함수
   void startBreak(int duration, String breakType) {
     int remainingTime = duration;
     
